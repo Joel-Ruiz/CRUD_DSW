@@ -4,49 +4,27 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
       
-      String nombreArchivoClientes = "clientes.txt";
-      String nombreArchivoCuentas = "cuentas.txt";
+      final String NOMBRE_ARCHIVO_CLIENTES = "clientes.txt";
+      final String NOMBRE_ARCHIVO_CUENTAS = "cuentas.txt";
+
       LectorArchivo lector = new LectorArchivo();
       ArrayList<String> listaClientes = new ArrayList<String>();
       ArrayList<String> listaCuentas = new ArrayList<String>();
+      ImprimirDatos imprimir = new ImprimirDatos();
 
-      lector.leerArchivo(nombreArchivoClientes, listaClientes);
-      lector.leerArchivo(nombreArchivoCuentas, listaCuentas);
+      lector.leerArchivo(NOMBRE_ARCHIVO_CLIENTES, listaClientes);
+      lector.leerArchivo(NOMBRE_ARCHIVO_CUENTAS, listaCuentas);
 
-      for(int i=0; i<listaClientes.size();i++){
+      imprimir.imprimirClientes(listaClientes, listaCuentas);
 
-        String[] datosCliente = listaClientes.get(i).split(",");
-        System.out.println("Num. Cliente: "+datosCliente[0]+" Nombre: "+datosCliente[1]);
+      ArrayList<Cliente> listaClientesNueva = new ArrayList<Cliente>();
+      ArrayList<Cuenta> listaCuentasNueva = new ArrayList<Cuenta>();
 
-        for(i=0; i<listaCuentas.size();i++){
-
-          String[] datosCuentas = listaCuentas.get(i).split(",");
-          
-          if (datosCuentas[0].equals(datosCliente[0])){
-            System.out.println("Num. Cuenta: "+datosCuentas[1]+" Saldo: "+datosCuentas[2]);
-          }
-        }
-      }
-
-      EscritorArchivo aniadirAlArchivo = new EscritorArchivo();
-      Cliente clienteNuevo = new Cliente();
-      Cuenta cuentaNueva = new Cuenta();
-      ValidadorCliente validarCliente = new ValidadorCliente();
-      ValidadorCuenta validarCuenta = new ValidadorCuenta();
-
-      clienteNuevo.setNumCliente("1234467000033300");
-      clienteNuevo.setNombreCliente("Augusto Quintal");
-
-
-      if(validarCliente.validarCliente(clienteNuevo))
-        aniadirAlArchivo.aniadirCliente(nombreArchivoClientes, clienteNuevo);
+      listaClientesNueva = ConvertirDatos.convertirCliente(listaClientes);
+      listaCuentasNueva = ConvertirDatos.convertirCuenta(listaCuentas);
       
-      
-      cuentaNueva.setNumCliente(clienteNuevo.numCliente);
-      cuentaNueva.setNumCuenta("1200343454005670");
-      cuentaNueva.setSaldoCuenta("15000");
+      Intermediario.añadirDatos(listaClientesNueva, listaCuentasNueva, NOMBRE_ARCHIVO_CUENTAS, NOMBRE_ARCHIVO_CLIENTES);
 
-      if(validarCuenta.validarCuenta(cuentaNueva))
-        aniadirAlArchivo.aniadirCuenta(nombreArchivoCuentas, cuentaNueva);
+      Intermediario.modificarArchivo(listaClientesNueva, listaCuentasNueva, NOMBRE_ARCHIVO_CUENTAS, NOMBRE_ARCHIVO_CLIENTES);
     }
   }
