@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class LectorArchivo {
 
-    public void leerArchivo(String direccionArchivo, ArrayList<String> clientes){
+    public void leerArchivo(String direccionArchivo, ArrayList<String> listaDatos){
         
         try{
             Scanner scanner = new Scanner(Paths.get(direccionArchivo));
             String lineaTexto;
             while(scanner.hasNextLine()){
                 lineaTexto = scanner.nextLine();
-                clientes.add(lineaTexto);
+                listaDatos.add(lineaTexto);
             } 
        
         }catch(Exception e){

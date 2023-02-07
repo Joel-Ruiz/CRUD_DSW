@@ -1,7 +1,5 @@
-1111111111111111,Carlos rosado
-2222222222222222,Miguel rosado
-3333333333333333,David Perez
-4444444444444444,Mariana martinez
-1234567891234567,Jose Adrian Pech Medina
-1234467001234500,Miguel Sansores Medina
-1234467000033300,Augusto Quintal
+
+1111111111111111, Augusto Reyes
+2222222222222222, Francisco Gonzales Pech
+3333333333333333, Isabel Guadalupe Magaña
+4444444444444444, Pedro Tzib
