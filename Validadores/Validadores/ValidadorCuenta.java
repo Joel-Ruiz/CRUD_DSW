@@ -1,4 +1,6 @@
+package Validadores;
 import java.util.ArrayList;
+import Modelo.*;
 
 public class ValidadorCuenta {
     

@@ -1,4 +1,7 @@
+package Validadores;
+
 import java.util.ArrayList;
+
 
 public class ValidadorCliente {
     
